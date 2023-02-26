@@ -1,8 +1,6 @@
 import view, operations, controller
 import os
 
-all_notes = []
-
 def create_new_note():
     file_name = view.f_name()
     if os.path.isfile(file_name):
@@ -14,10 +12,11 @@ def create_new_note():
     else:
         with open (file_name, 'w', encoding='utf-8') as file:
             file.write(view.note_text())
-        all_notes.append(file_name.replace(".txt", ""))
+        with open ("all_notes.txt", 'a', encoding='utf-8') as file:
+            file.write(file_name.replace(".txt", "") + "\n")
 
 def searching_note():
-    operations.good_view()
+    view.good_view()
     file_name = view.f_name()
     if (file_name.replace(".txt", "")) == "q" or (file_name.replace(".txt", "")) == "Q":
         controller.start()
@@ -45,7 +44,9 @@ def add_info_to_note():
         add_info_to_note()
 
 def show_all_notes():
-    [print (i) for i in all_notes]
+    with open ("all_notes.txt", 'r') as file:
+        for line in file:
+            print(line.strip())
 
 def remove_note():
     operations.good_view()
@@ -53,7 +54,12 @@ def remove_note():
     if (file_name.replace(".txt", "")) == "q" or (file_name.replace(".txt", "")) == "Q":
         controller.start()
     elif os.path.isfile(file_name):
-        all_notes.remove(file_name.replace(".txt", ""))
+        with open ('all_notes.txt', 'r') as file:
+                lines = file.readlines()
+                with open ('all_notes.txt', 'w') as file:
+                    for line in lines:
+                        if line != (file_name.replace(".txt", "") + "\n"):
+                            file.write(line)
         os.remove(file_name)
         print("Удалено!")
     else: 
