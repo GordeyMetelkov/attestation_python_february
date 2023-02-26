@@ -25,8 +25,7 @@ def searching_note():
             for line in file:
                 print(line.strip())
     else:
-        print("Такой заметки не существует!")
-        print("Введите q, если хотите выйти в основное меню")
+        view.there_is_no()
         searching_note()
 
 def add_info_to_note():
@@ -39,11 +38,11 @@ def add_info_to_note():
             file.write(view.note_text())
         print("Добавлено!")
     else:
-        print("Такой заметки не существует!")
-        print("Введите q, если хотите выйти в основное меню")
+        view.there_is_no()
         add_info_to_note()
 
 def show_all_notes():
+    print("\nСписок всех заметок:")
     with open ("all_notes.txt", 'r', encoding='utf-8') as file:
         for line in file:
             print(line.strip())
@@ -63,6 +62,5 @@ def remove_note():
         os.remove(file_name)
         print("Удалено!")
     else: 
-        print("Такой заметки не существует!")
-        print("Введите q, если хотите выйти в основное меню")
+        view.there_is_no()
         remove_note()
