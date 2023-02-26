@@ -31,3 +31,9 @@ def add_info_to_note():
     else:
         print("Такой заметки не существует!")
         add_info_to_note()
+
+def show_all_notes():
+    with open ("all_notes.txt", 'r') as file:
+        for line in file:
+            print(line.strip())
+
