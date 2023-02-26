@@ -27,3 +27,7 @@ def start_view():
 
 def answer():
     return input("Ответ: ")
+
+def there_is_no():
+    print("Такой заметки не существует!")
+    print("Введите q, если хотите выйти в основное меню")
