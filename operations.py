@@ -10,7 +10,7 @@ def create_new_note():
         with open (file_name, 'w', encoding='utf-8') as file:
             file.write(view.note_text())
         with open ("all_notes.txt", 'a', encoding='utf-8') as file:
-            file.write(name + "\n")
+            file.write(file_name.replace(".txt", "") + "\n")
 
 def searching_note():
     file_name = view.f_name()
@@ -22,3 +22,12 @@ def searching_note():
         print("Такой заметки не существует!")
         searching_note()
 
+def add_info_to_note():
+    file_name = view.f_name()
+    if os.path.isfile(file_name):
+        with open (file_name, 'a', encoding='utf-8') as file:
+            file.write(view.note_text())
+        print("Добавлено!")
+    else:
+        print("Такой заметки не существует!")
+        add_info_to_note()
