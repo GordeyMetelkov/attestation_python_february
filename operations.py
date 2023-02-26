@@ -31,7 +31,7 @@ def searching_note():
         searching_note()
 
 def add_info_to_note():
-    operations.good_view()
+    view.good_view()
     file_name = view.f_name()
     if (file_name.replace(".txt", "")) == "q" or (file_name.replace(".txt", "")) == "Q":
         controller.start()
