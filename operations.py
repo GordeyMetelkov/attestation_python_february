@@ -37,3 +37,17 @@ def show_all_notes():
         for line in file:
             print(line.strip())
 
+def remove_note():
+    file_name = view.f_name()
+    if os.path.isfile(file_name):
+        with open ('all_notes.txt', 'r') as file:
+            lines = file.readlines()
+            with open ('all_notes.txt', 'w') as file:
+                for line in lines:
+                    if line != (file_name.replace(".txt", "") + "\n"):
+                        file.write(line)
+        os.remove(file_name)
+        print("Удалено!")
+    else: 
+        print("Такой заметки не существует!")
+        remove_note()
