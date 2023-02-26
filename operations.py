@@ -44,19 +44,19 @@ def add_info_to_note():
         add_info_to_note()
 
 def show_all_notes():
-    with open ("all_notes.txt", 'r') as file:
+    with open ("all_notes.txt", 'r', encoding='utf-8') as file:
         for line in file:
             print(line.strip())
 
 def remove_note():
-    operations.good_view()
+    view.good_view()
     file_name = view.f_name()
     if (file_name.replace(".txt", "")) == "q" or (file_name.replace(".txt", "")) == "Q":
         controller.start()
     elif os.path.isfile(file_name):
-        with open ('all_notes.txt', 'r') as file:
+        with open ('all_notes.txt', 'r', encoding='utf-8') as file:
                 lines = file.readlines()
-                with open ('all_notes.txt', 'w') as file:
+                with open ('all_notes.txt', 'w', encoding='utf-8') as file:
                     for line in lines:
                         if line != (file_name.replace(".txt", "") + "\n"):
                             file.write(line)
