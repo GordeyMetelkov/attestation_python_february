@@ -2,8 +2,7 @@ import view
 import os
 
 def create_new_note():
-    name = view.note_name()
-    file_name = name + '.txt'
+    file_name = view.f_name()
     if os.path.isfile(file_name):
         print("Заметка с таким именем существует!")
         create_new_note()
@@ -14,8 +13,7 @@ def create_new_note():
             file.write(name + "\n")
 
 def searching_note():
-    name = view.note_name()
-    file_name = name + ".txt"
+    file_name = view.f_name()
     if os.path.isfile(file_name):
         with open (file_name, 'r', encoding='utf-8') as file:
             for line in file:
