@@ -1,4 +1,4 @@
-import view
+import view, operations
 import os
 
 def create_new_note():
@@ -13,6 +13,7 @@ def create_new_note():
             file.write(file_name.replace(".txt", "") + "\n")
 
 def searching_note():
+    operations.good_view()
     file_name = view.f_name()
     if os.path.isfile(file_name):
         with open (file_name, 'r', encoding='utf-8') as file:
@@ -23,6 +24,7 @@ def searching_note():
         searching_note()
 
 def add_info_to_note():
+    operations.good_view()
     file_name = view.f_name()
     if os.path.isfile(file_name):
         with open (file_name, 'a', encoding='utf-8') as file:
@@ -38,6 +40,7 @@ def show_all_notes():
             print(line.strip())
 
 def remove_note():
+    operations.good_view()
     file_name = view.f_name()
     if os.path.isfile(file_name):
         with open ('all_notes.txt', 'r') as file:
